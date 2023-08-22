@@ -3,6 +3,7 @@ package net.project.reportgenerator;
 
 import net.project.reportgenerator.API.ReportForThePeriod;
 import net.project.reportgenerator.Model.RequestBody;
+import net.project.reportgenerator.Service.ConvertToJSON;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -15,6 +16,9 @@ public class Application{
     public static void main(String[] args){
 
         RequestBody requestBody = new RequestBody();
+        System.out.println(ConvertToJSON.convert(requestBody.getDataForRequestBody()));
+
+
         ReportForThePeriod reportForThePeriod = new ReportForThePeriod();
         try{
             System.out.println(reportForThePeriod.sendRequest(requestBody));

@@ -26,7 +26,7 @@ public class ReportForThePeriod implements Request {
 
     @Override
     public String sendRequest(RequestBody requestBody) throws URISyntaxException, IOException, InterruptedException {
-        String JSON = ConvertToJSON.convert(requestBody);
+        String JSON = ConvertToJSON.convert(requestBody.getDataForRequestBody());
         URI uri = new URI(url);
         HttpClient HttpClient = java.net.http.HttpClient.newHttpClient();
 

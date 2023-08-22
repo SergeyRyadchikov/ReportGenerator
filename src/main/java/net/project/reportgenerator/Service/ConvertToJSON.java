@@ -4,13 +4,19 @@ package net.project.reportgenerator.Service;
  */
 
 
-import net.project.reportgenerator.Model.RequestBody;
-import com.google.gson.Gson;
-public class ConvertToJSON {
-    public static String convert(RequestBody requestBody){
-        Gson gson = new Gson();
-        String json = gson.toJson(requestBody);
-        return json;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.util.HashMap;
+
+public class ConvertToJSON {
+    public static String convert(HashMap<String, Object> requestBody) {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(requestBody);
+            return json;
+        }catch (JsonProcessingException e){
+            return e.getMessage();
+        }
     }
 }
